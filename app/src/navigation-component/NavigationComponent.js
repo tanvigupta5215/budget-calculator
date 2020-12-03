@@ -1,10 +1,12 @@
 import React from "react";
-import { Link, BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import IncomeCalculatorComponent from "../income-calculator-component/IncomeCalculatorComponent";
-import FlowerPotIcon from "../static/FlowerPotIcon.svg";
 import Plant from "../static/Plant";
 import Wallet from "../static/Wallet";
 import PiggyBank from "../static/PiggyBank";
+import MonthlySavingsComponent from "../monthly-savings-component/MonthlySavingsComponent";
+import MonthlyExpensesComponent from "../monthly-expenses-component/MonthlyExpensesComponent";
+import AnnualExpensesComponent from "../annual-expenses-component/AnnualExpensesComponent";
 import './NavigationComponent.css';
 
 class NavigationComponent extends React.Component{
@@ -12,41 +14,51 @@ class NavigationComponent extends React.Component{
        return (
            <div id="navigationComponent" className="container">
                <Router>
-                   <div className="row">
-                       <div className="col-3">
-                           <nav>
+                   <div className="row mt-5">
+                       <div className="col-4">
+                           <nav className="nav">
                                <ul className="text-left list-group-flush">
-                                   <li className="list-group-item">
-                                   {/*<img className="plant-icon" src= {FlowerPotIcon} alt=""/>*/}
-                                   <Plant/>
-                                       <Link to="/income">
-                                        Income
-                                   </Link>
-                                   </li>
-                                   <li className="list-group-item">
-                                       <Wallet/>
-                                       <NavLink to="/monthly-expenses">
-                                           Monthly Expenses
-                                       </NavLink>
+                                       <li className="list-group-item nav-item border-0 p-0" >
+                                           <NavLink className="nav-link" to="/income">
+                                               <Plant/> Income
+                                           </NavLink>
+                                       <div className="pointer"> </div>
                                        </li>
-                                   <li className="list-group-item">
-                                       <Wallet/>
-                                       <NavLink to="/annual-expenses">
+                                   <li className="list-group-item nav-item border-0 p-0">
+                                       <NavLink className="nav-link" to="/monthly-expenses">
+                                           <Wallet/> Monthly Expenses
+                                       </NavLink>
+                                       <div className="pointer"> </div>
+                                       </li>
+                                   <li className="list-group-item nav-item border-0 p-0">
+                                       <NavLink className="nav-link" to="/annual-expenses">
+                                           <Wallet/>
                                            Annual Expenses
                                        </NavLink>
+                                       <div className="pointer"> </div>
                                        </li>
-                                   <li className="list-group-item">
-                                       <PiggyBank/>
-                                       <NavLink to="/monthly-savings">
+                                   <li className="list-group-item nav-item border-0 p-0">
+                                       <NavLink className="nav-link" to="/monthly-savings">
+                                           <PiggyBank/>
                                            Monthly Savings
                                        </NavLink>
+                                       <div className="pointer"> </div>
                                        </li>
                                </ul>
                            </nav>
                        </div>
-                       <div className="col-9">
+                       <div className="col-8">
                            <Route exact path="/income">
                                <IncomeCalculatorComponent/>
+                           </Route>
+                           <Route exact path="/monthly-expenses">
+                               <MonthlyExpensesComponent/>
+                           </Route>
+                           <Route exact path="/annual-expenses">
+                               <AnnualExpensesComponent/>
+                           </Route>
+                           <Route exact path="/monthly-savings">
+                               <MonthlySavingsComponent/>
                            </Route>
                        </div>
                    </div>

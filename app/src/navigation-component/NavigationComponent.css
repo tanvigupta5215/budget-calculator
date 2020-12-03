@@ -1,6 +1,34 @@
-#navIcon{
+#navIcon {
     width: 30px;
     height: 45px;
     fill: #2ca360;
     margin-right: 15px;
+}
+
+.active #navIcon{
+    fill: #ffffff;
+}
+
+.nav-item > a {
+    color: #3c4142;
+}
+
+.nav-item > .active {
+    background-color: #2ca360;
+    color: #ffffff;
+}
+
+.active + .pointer  {
+    height: 0;
+    width:0;
+    border-top: 31px solid transparent;
+    border-bottom: 31px solid transparent;
+    border-left: 34px solid rgb(44, 163, 96);
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: -34px;
+}
+.nav-item{
+    position: relative;
 }

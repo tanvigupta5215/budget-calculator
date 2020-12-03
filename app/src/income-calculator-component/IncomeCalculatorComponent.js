@@ -16,12 +16,12 @@ class IncomeCalculatorComponent extends React.Component {
                             <p className="text-small">(take home pay)</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="Enter Monthly pay"
+                            <input type="number" className="form-control" placeholder="" aria-label="Enter Monthly pay"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
@@ -38,12 +38,12 @@ class IncomeCalculatorComponent extends React.Component {
                             <p className="text-small">(rental income, alimony, etc)</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="monthlyOtherIncome"
+                            <input type="number" className="form-control" placeholder="" aria-label="monthlyOtherIncome"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
@@ -61,12 +61,12 @@ class IncomeCalculatorComponent extends React.Component {
                             </p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="nnualOtherIncome"
+                            <input type="number" className="form-control" placeholder="" aria-label="annualOtherIncome"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>

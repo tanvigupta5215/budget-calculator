@@ -16,12 +16,12 @@ class MonthlySavingsComponent extends React.Component {
                             <p className="text-small">(RRSP, TFSA, Non-reg, etc.)</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="enterRetirementSavings"
+                            <input type="number" className="form-control" placeholder="" aria-label="enterRetirementSavings"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
@@ -38,12 +38,12 @@ class MonthlySavingsComponent extends React.Component {
                             <p className="text-small">(trips, cars, etc.)</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="otherSavings"
+                            <input type="number" className="form-control" placeholder="" aria-label="otherSavings"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
