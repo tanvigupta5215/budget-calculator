@@ -5,6 +5,7 @@ import Button from "react-bootstrap/button";
 import './App.css';
 import React from "react";
 import MonthlyBudgetCalculator from "./monthly-saving-calculator/MonthlyBudgetCalculator";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends React.Component{
