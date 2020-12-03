@@ -2,10 +2,10 @@
 import logo from './logo.svg';
 // eslint-disable-next-line no-unused-vars
 import Button from "react-bootstrap/button";
-import './App.css';
 import React from "react";
-import MonthlyBudgetCalculator from "./monthly-saving-calculator/MonthlyBudgetCalculator";
+import IncomeCalculatorComponent from "./income-calculator-component/IncomeCalculatorComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 class App extends React.Component{
@@ -15,7 +15,9 @@ class App extends React.Component{
                 <header className="App-header">
                     Budget Calculator
                 </header>
-                <MonthlyBudgetCalculator />
+                <div className="bg-white">
+                <IncomeCalculatorComponent />
+                </div>
             </div>
         );
     }

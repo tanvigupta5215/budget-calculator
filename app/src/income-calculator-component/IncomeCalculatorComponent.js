@@ -1,6 +1,6 @@
 import React from "react";
-import './MonthlyBudgetCalculator.css';
-class MonthlyBudgetCalculator extends React.Component {
+import './IncomeCalculatorComponent.css';
+class IncomeCalculatorComponent extends React.Component {
     render() {
         return(
             <div className="container">
@@ -77,4 +77,4 @@ class MonthlyBudgetCalculator extends React.Component {
     }
 }
 
-export default MonthlyBudgetCalculator;
+export default IncomeCalculatorComponent;
