@@ -1,0 +1,15 @@
+.text-large{
+    font-size: 1.25em;
+}
+
+.input-styling{
+    width: 20px;
+    height: 20px;
+}
+.text-small{
+    font-size: 0.75em;
+}
+
+.form-check-label:before{
+    background-color:red;
+}
