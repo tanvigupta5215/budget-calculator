@@ -4,9 +4,10 @@ import logo from './logo.svg';
 import Button from "react-bootstrap/button";
 import React from "react";
 // import IncomeCalculatorComponent from "./income-calculator-component/IncomeCalculatorComponent";
-import MonthlySavingsComponent from "./monthly-savings-component/MonthlySavingsComponent";
+//import MonthlySavingsComponent from "./monthly-savings-component/MonthlySavingsComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import MonthlyBudgetReviewComponent from './monthly-budget-review-component/MonthlyBudgetReviewComponent';
 
 
 class App extends React.Component{
@@ -17,7 +18,7 @@ class App extends React.Component{
                     Budget Calculator
                 </header>
                 <div className="bg-white">
-                <MonthlySavingsComponent />
+                <MonthlyBudgetReviewComponent />
                 </div>
             </div>
         );

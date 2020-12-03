@@ -21,7 +21,7 @@ class MonthlySavingsComponent extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="enterRetirementSavings"
+                            <input disabled type="text" className="form-control" placeholder="" aria-label="enterRetirementSavings"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
@@ -43,7 +43,7 @@ class MonthlySavingsComponent extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="otherSavings"
+                            <input disabled type="text" className="form-control" placeholder="" aria-label="otherSavings"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
