@@ -12,9 +12,13 @@ class App extends React.Component{
                 <header className="App-header">
                     Budget Calculator
                 </header>
-                <div className="bg-white">
+                <div className="row bg-white mt-5">
+                <div className="col-md-12 col-xs-12 col-lg-7">
+                <NavigationComponent/>
+                </div>
+                <div className="col-lg-5 col-xl-5">
                 <MonthlyBudgetReviewComponent />
-                    <NavigationComponent/>
+                </div>
                 </div>
             </div>
         );

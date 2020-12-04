@@ -4,14 +4,17 @@ import './MonthlyBudgetReviewComponent.css';
 class MonthlyBudgetReviewComponent extends React.Component{
     render(){
         return(
-            <div className="container">
+            <div id="monthlyBudgetReviewItem" className="container">
+                <div className="row">
+                    <div className=" col pt-3 pb-3 heading text-center">Monthly Budget Review</div>
+                </div>
                 <div id="totalMonthlyIncome" className="row">
                 <div className="col-6 text-left">
                         <label className="form-check-label" id="defaultCheck1" htmlFor="monthlyIncome">
                             <p className="mb-0">Total monthly income=</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
@@ -27,7 +30,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <p className="mb-0">Total monthly expenses=</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
@@ -43,7 +46,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <p className="mb-0">Total annual expenses=</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
@@ -59,7 +62,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <p className="mb-0">Total monthly savings=</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
@@ -75,7 +78,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <p className="mb-0">Under/over budget=</p>
                         </label>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>

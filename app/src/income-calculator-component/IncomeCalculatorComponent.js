@@ -10,7 +10,7 @@ class IncomeCalculatorComponent extends React.Component {
                        <input className="form-check-input input-styling mt-2" type="checkbox" color="black" value="" id="takeHomePay" />
                     </div>
                     </div>
-                    <div className="col-3 text-left">
+                    <div className="col-4 text-left">
                         <label className="form-check-label" id="defaultCheck1" htmlFor="takeHomePay">
                             <p className="mb-0">Monthly pay=</p>
                             <p className="text-small">(take home pay)</p>
@@ -26,13 +26,14 @@ class IncomeCalculatorComponent extends React.Component {
                         </div>
                     </div>
                 </div>
+                <hr/>
                 <div id="monthlyOtherIncomeItem" className="row">
                     <div className="col-1">
                         <div className="form-check">
                             <input className="form-check-input input-styling mt-2" type="checkbox" color="black" value="" id="monthlyOtherIncome" />
                         </div>
                     </div>
-                    <div className="col-3 text-left">
+                    <div className="col-4 text-left">
                         <label className="form-check-label" id="defaultCheck1" htmlFor="monthlyOtherIncome">
                             <p className="mb-0">Monthly other =</p>
                             <p className="text-small">(rental income, alimony, etc)</p>
@@ -48,13 +49,14 @@ class IncomeCalculatorComponent extends React.Component {
                         </div>
                     </div>
                 </div>
+                <hr/>
                 <div id="annualOtherIncomeItem" className="row">
                     <div className="col-1">
                         <div className="form-check">
                             <input className="form-check-input input-styling mt-2" type="checkbox" color="black" value="" id="annualOtherIncome" />
                         </div>
                     </div>
-                    <div className="col-3 text-left">
+                    <div className="col-4 text-left">
                         <label className="form-check-label" id="defaultCheck1" htmlFor="annualOtherIncome">
                             <p className="mb-0">Annual other =</p>
                             <p className="text-small">(bonuses, gifts, tax refund, etc.)
@@ -71,7 +73,6 @@ class IncomeCalculatorComponent extends React.Component {
                         </div>
                     </div>
                 </div>
-
             </div>
         );
     }

@@ -13,3 +13,6 @@
 .form-check-label:before{
     background-color:red;
 }
+hr{
+    border-top: 1px solid rgb(241, 241, 241);
+}

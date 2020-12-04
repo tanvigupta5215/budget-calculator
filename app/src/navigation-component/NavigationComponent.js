@@ -15,7 +15,7 @@ class NavigationComponent extends React.Component{
            <div id="navigationComponent" className="container">
                <Router>
                    <div className="row mt-5">
-                       <div className="col-4">
+                       <div className="col-lg-4 col-xl-4 col-md-5 col-sm-6">
                            <nav className="nav">
                                <ul className="text-left list-group-flush">
                                        <li className="list-group-item nav-item border-0 p-0" >
@@ -47,7 +47,7 @@ class NavigationComponent extends React.Component{
                                </ul>
                            </nav>
                        </div>
-                       <div className="col-8">
+                       <div className="col-lg-8 col-xl-8 col-md-7 col-sm-6">
                            <Route exact path="/income">
                                <IncomeCalculatorComponent/>
                            </Route>
