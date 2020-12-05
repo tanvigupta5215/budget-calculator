@@ -24,6 +24,7 @@ class MonthlyExpensesComponent extends React.Component{
                              <ExpandableRowItemComponent onUpdate={this.pushToDataStore.bind(this)} initialData={expenseLabel} index={index} key={index}/>
                          );
                      })
+
          );
      }
 }

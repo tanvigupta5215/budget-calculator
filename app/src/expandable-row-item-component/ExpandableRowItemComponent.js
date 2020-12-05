@@ -1,6 +1,7 @@
 import React from "react";
 import Arrow from "../static/Arrow";
 import './ExpandableRowItemComponent.css';
+import deleteIcon from '../static/DeleteIcon.svg';
 class ExpandableRowItemComponent extends React.Component {
     initialData;
     hasChildren;
@@ -67,7 +68,20 @@ class ExpandableRowItemComponent extends React.Component {
             }
             return {...prevState};
         });
+    }
 
+    addButtonClickHandler(){
+        console.log('Button Clicked');
+        this.initialData.items.push({
+            name:"",
+            label: "",
+            itemId: 'item-' + new Date().getTime(),
+            isCustomAdded: true,
+            isEditable: true,
+            on: true,
+            value: ''
+        });
+        this.setState(this.state);
 
     }
 
@@ -81,7 +95,7 @@ class ExpandableRowItemComponent extends React.Component {
             let inputValue = '';
             this.initialData.items.forEach((item) => {
                 console.log('itemValue: ', item.value);
-                inputValue = Number(inputValue) + (item.on ?Number(item.value): 0);
+                inputValue = Number(inputValue) + (item.on ? Number(item.value): 0);
             });
             prevState.inputValue = (inputValue > 0) ? inputValue : '';
             console.log(this.initialData);
@@ -91,6 +105,31 @@ class ExpandableRowItemComponent extends React.Component {
             this.props.onUpdate(this.initialData);
             return {...prevState};
         });
+    }
+
+    onBlurHandler(event){
+        console.log(event.target.value, this.initialData);
+        this.initialData.name = event.target.value.replaceAll(' ', '');
+        this.initialData.label = event.target.value;
+        if(this.initialData.name.length > 0){
+        this.initialData.isEditable = false;
+        }
+        this.setState(this.state);
+    }
+
+    deleteIconHandler(event){
+        const itemIndex = this.initialData.items.findIndex((item) => {
+            return item.itemId === event.currentTarget.id;
+        });
+        this.initialData.items.splice(itemIndex, 1);
+        this.setState(this.state);
+    }
+
+    deleteRow(event){
+        if(this.initialData.isChild){
+            this.props.updateParentValue();
+        }
+        this.props.deleteHandler(event);
     }
 
     render() {
@@ -103,11 +142,23 @@ class ExpandableRowItemComponent extends React.Component {
                         </div>
                     </div>
                     <div className={`${this.props.isChild ? 'col-5 text-left' : 'col-4 text-left'}`}>
-                        <label tabIndex="-1" onClickCapture={this.menuClickHandler.bind(this)} className="form-check-label" id="defaultCheck1" htmlFor="monthlyOtherIncome">
-                            { this.hasChildren ? <span className="mr-2"><Arrow on={this.state.menuToggle}/></span> : null}
-                            <span> {this.initialData.label}=</span>
-                            {this.initialData.description ? <p className="text-small off">{this.initialData.description}</p> : null}
-                        </label>
+                        {
+                            this.initialData.isEditable ?
+                           <div>
+                                <input type="text" placeholder="Other..." onBlur={this.onBlurHandler.bind(this)}/>
+                           </div>
+                                :
+                             <span>
+                                  { (this.initialData.isCustomAdded && !this.initialData.isEditable) ? <button id={this.initialData.itemId} className="btn btn-outline p-0" onClick={this.deleteRow.bind(this)}>
+                                      <img src={deleteIcon} className="delete-icon mr-1" alt=""/>
+                                  </button> : null}
+                                 <label tabIndex="-1" onClickCapture={this.menuClickHandler.bind(this)} className="form-check-label" id="defaultCheck1" htmlFor="monthlyOtherIncome">
+                                { this.hasChildren ? <span className="mr-2"><Arrow on={this.state.menuToggle}/></span> : null}
+                                     <span> {this.initialData.label}=</span>
+                                     {this.initialData.description ? <p className="text-small off">{this.initialData.description}</p> : null}
+                            </label>
+                             </span>
+                        }
                     </div>
                     <div className={`${this.props.isChild ? 'col-3' : 'col-3 offset-1'}`}>
                         <div className="input-group mb-3">
@@ -125,9 +176,15 @@ class ExpandableRowItemComponent extends React.Component {
                             this.initialData.items.map((item, index) => {
                                 item.isChild = true;
                                 return (
-                                    <ExpandableRowItemComponent updateParentValue={this.updateParentInput.bind(this)} onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
+                                    <ExpandableRowItemComponent deleteHandler={this.deleteIconHandler.bind(this)} updateParentValue={this.updateParentInput.bind(this)} onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
                                 );
                             })
+                        }
+                        {
+                           this.hasChildren ? <div className="row ml-5">
+                               <button onClick={this.addButtonClickHandler.bind(this)} className="add-btn ml-4">+</button>
+                           </div> : null
+
                         }
                     </div>: null
                 }
