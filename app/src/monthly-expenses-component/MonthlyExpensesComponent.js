@@ -1,5 +1,4 @@
 import React from "react";
-import Arrow from '../static/Arrow';
 import labelingData from "../static/initialData";
 import ExpandableRowItemComponent from "../expandable-row-item-component/ExpandableRowItemComponent";
 class MonthlyExpensesComponent extends React.Component{
@@ -29,8 +28,8 @@ class MonthlyExpensesComponent extends React.Component{
 
     }
 
-    pushToDataStore(state, rowData){
-        console.log('Parent onUpdateCalled: ', state, rowData);
+    pushToDataStore(rowData){
+        console.log('Parent onUpdateCalled: ', rowData);
     }
 
     foodInputChanged(event){
@@ -45,6 +44,7 @@ class MonthlyExpensesComponent extends React.Component{
     render() {
          return (
                      this.expenseInformation.map((expenseLabel, index) => {
+                         expenseLabel.isParent = true;
                          return (
                              <ExpandableRowItemComponent onUpdate={this.pushToDataStore} initialData={expenseLabel} index={index} key={index}/>
                          );

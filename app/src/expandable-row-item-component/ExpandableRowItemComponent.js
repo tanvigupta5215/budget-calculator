@@ -29,18 +29,21 @@ class ExpandableRowItemComponent extends React.Component {
         this.initialData.on = this.state.checkBoxState;
         this.initialData.value = this.state.inputValue;
         this.initialData.enabled = this.state.menuToggle;
+        this.props.onUpdate(this.initialData);
         // event.stopPropagation();
     }
 
     checkBoxHandler(event){
-        this.setState(() => {
+        this.setState((prevState) => {
             // eslint-disable-next-line react/no-direct-mutation-state
-            this.state.checkBoxState = event.target.checked;
-            return this.state;
+            console.log('Before Update: ', prevState.checkBoxState);
+            prevState.checkBoxState = event.target.checked;
+            this.initialData.on = prevState.checkBoxState;
+            this.initialData.value = prevState.inputValue;
+            this.initialData.enabled = prevState.menuToggle;
+            return {...prevState};
         });
-        this.initialData.on = this.state.checkBoxState;
-        this.initialData.value = this.state.inputValue;
-        this.initialData.enabled = this.state.menuToggle;
+        console.log('After Update: ', this.state.checkBoxState);
         this.props.onUpdate(this.initialData);
     }
 
@@ -53,11 +56,11 @@ class ExpandableRowItemComponent extends React.Component {
         this.initialData.on = this.state.checkBoxState;
         this.initialData.value = this.state.inputValue;
         this.initialData.enabled = this.state.menuToggle;
-        this.props.onUpdate(this.state, this.initialData);
+        this.props.onUpdate(this.initialData);
     }
 
-    onUpdateHandler(state, rowData){
-      console.log('Child onUpdateCalled: ', state, rowData);
+    onUpdateHandler(rowData){
+      console.log('Child onUpdateCalled: ', rowData);
       this.props.onUpdate(this.initialData);
     }
 
@@ -91,6 +94,7 @@ class ExpandableRowItemComponent extends React.Component {
                     this.state.menuToggle ?   <div className="row">
                         {
                             this.initialData.items.map((item, index) => {
+                                item.isChild = true;
                                 return (
                                     <ExpandableRowItemComponent onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
                                 );

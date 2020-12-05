@@ -18,6 +18,7 @@ const labelingData = {
     monthlyExpenses: [
         {
             name: 'food',
+            id: 'foodItem',
             label: 'Food',
             enabled: true,
             value: '',
@@ -45,6 +46,7 @@ const labelingData = {
         },
         {
             name: 'clothing',
+            id: 'clothingItem',
             label: 'Clothing',
             description: '(shirts, pants, socks, etc.)',
             enabled: false,
@@ -76,6 +78,7 @@ const labelingData = {
                 },
             ],
         },
+
         {
             name: 'household',
             label: 'Household',

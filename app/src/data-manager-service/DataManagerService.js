@@ -25,6 +25,9 @@ class DataManagerService {
             otherSavingsInput: ''
         }
     };
+    monthlyExpenseState = {
+
+    };
     #incomeComponentStatePublisher;
     incomeComponentStateDataSubscriber;
     #monthlySavingsStatePublisher;
