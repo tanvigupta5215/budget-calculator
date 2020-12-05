@@ -4,6 +4,7 @@ import './ExpandableRowItemComponent.css';
 class ExpandableRowItemComponent extends React.Component {
     initialData;
     hasChildren;
+    numberRegex = /^[\d]+$/
     constructor(props) {
         super(props);
         this.initialData = props.initialData;
@@ -23,45 +24,73 @@ class ExpandableRowItemComponent extends React.Component {
         this.setState((prevState) => {
             console.log(this.state.menuToggle, prevState.menuToggle);
              // eslint-disable-next-line react/no-direct-mutation-state
-            this.state.menuToggle = !prevState.menuToggle;
-             return {...this.state};
+            prevState.menuToggle = !prevState.menuToggle;
+            this.initialData.on = prevState.checkBoxState;
+            this.initialData.value = prevState.inputValue;
+            this.initialData.enabled = prevState.menuToggle;
+            this.props.onUpdate(this.initialData);
+             return {...prevState};
         });
-        this.initialData.on = this.state.checkBoxState;
-        this.initialData.value = this.state.inputValue;
-        this.initialData.enabled = this.state.menuToggle;
-        this.props.onUpdate(this.initialData);
+
         // event.stopPropagation();
     }
 
     checkBoxHandler(event){
         this.setState((prevState) => {
             // eslint-disable-next-line react/no-direct-mutation-state
-            console.log('Before Update: ', prevState.checkBoxState);
             prevState.checkBoxState = event.target.checked;
             this.initialData.on = prevState.checkBoxState;
             this.initialData.value = prevState.inputValue;
             this.initialData.enabled = prevState.menuToggle;
+            if(this.initialData.isChild){
+                this.props.updateParentValue();
+            }
+            this.props.onUpdate(this.initialData);
             return {...prevState};
         });
-        console.log('After Update: ', this.state.checkBoxState);
-        this.props.onUpdate(this.initialData);
+
     }
 
     onChangeInputHandler(event){
-        this.setState(() => {
+        this.setState((prevState) => {
             // eslint-disable-next-line react/no-direct-mutation-state
-            this.state.inputValue = event.target.value;
-            return this.state;
+            console.log('event val: ', event.target.value);
+            // if(this.numberRegex.test(event.target.value)) {
+            prevState.inputValue = event.target.value;
+            // }
+            this.initialData.on = prevState.checkBoxState;
+            this.initialData.value = prevState.inputValue;
+            this.initialData.enabled = prevState.menuToggle;
+            this.props.onUpdate(this.initialData);
+            if(this.initialData.isChild){
+                this.props.updateParentValue();
+            }
+            return {...prevState};
         });
-        this.initialData.on = this.state.checkBoxState;
-        this.initialData.value = this.state.inputValue;
-        this.initialData.enabled = this.state.menuToggle;
-        this.props.onUpdate(this.initialData);
+
+
     }
 
     onUpdateHandler(rowData){
-      console.log('Child onUpdateCalled: ', rowData);
+      // console.log('Child onUpdateCalled: ', rowData);
       this.props.onUpdate(this.initialData);
+    }
+
+    updateParentInput(){
+        this.setState((prevState) => {
+            let inputValue = '';
+            this.initialData.items.forEach((item) => {
+                console.log('itemValue: ', item.value);
+                inputValue = Number(inputValue) + (item.on ?Number(item.value): 0);
+            });
+            prevState.inputValue = (inputValue > 0) ? inputValue : '';
+            console.log(this.initialData);
+            this.initialData.on = prevState.checkBoxState;
+            this.initialData.value = prevState.inputValue;
+            this.initialData.enabled = prevState.menuToggle;
+            this.props.onUpdate(this.initialData);
+            return {...prevState};
+        });
     }
 
     render() {
@@ -85,7 +114,7 @@ class ExpandableRowItemComponent extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="number" readOnly={!this.props.isChild} className="form-control" onChange={this.onChangeInputHandler.bind(this)} value={this.state.inputValue} placeholder="" aria-label={this.initialData.label}
+                            <input type="number" readOnly={this.hasChildren} className="form-control" onChange={this.onChangeInputHandler.bind(this)} value={this.state.inputValue} placeholder="" aria-label={this.initialData.label}
                                    aria-describedby="basic-addon1" disabled={!this.state.checkBoxState} />
                         </div>
                     </div>
@@ -96,7 +125,7 @@ class ExpandableRowItemComponent extends React.Component {
                             this.initialData.items.map((item, index) => {
                                 item.isChild = true;
                                 return (
-                                    <ExpandableRowItemComponent onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
+                                    <ExpandableRowItemComponent updateParentValue={this.updateParentInput.bind(this)} onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
                                 );
                             })
                         }

@@ -23,7 +23,7 @@ class App extends React.Component{
                 <NavigationComponent dataManagerService={this.dataManagerService}/>
                 </div>
                 <div className="col-lg-5 col-xl-5">
-                <MonthlyBudgetReviewComponent />
+                <MonthlyBudgetReviewComponent dataManagerService={this.dataManagerService} />
                 </div>
                 </div>
             </div>

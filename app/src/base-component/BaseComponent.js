@@ -9,22 +9,23 @@ class BaseComponent extends React.Component{
         this.setState(() => {
             // eslint-disable-next-line react/no-direct-mutation-state
             this.state[rowKey][event.target.id] = event.target.checked;
+            this.pushStateChangeToDataManager();
             return this.state;
         });
-        this.pushStateChangeToDataManager();
     }
 
     onInputChangeHandler(rowKey, event){
         this.setState(() => {
             // eslint-disable-next-line react/no-direct-mutation-state
             this.state[rowKey][event.target.id] = event.target.value;
+            this.pushStateChangeToDataManager();
             return this.state;
         });
-        this.pushStateChangeToDataManager();
     }
 
     pushStateChangeToDataManager() {
         this.dataService[this.componentStateName] = this.state;
+        this.dataService.updateBudgetReview();
     }
 }
 

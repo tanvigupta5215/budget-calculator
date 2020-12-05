@@ -52,10 +52,10 @@ class NavigationComponent extends React.Component{
                                <IncomeCalculatorComponent dataManagerService={this.props.dataManagerService}/>
                            </Route>
                            <Route exact path="/monthly-expenses">
-                               <MonthlyExpensesComponent/>
+                               <MonthlyExpensesComponent dataManagerService={this.props.dataManagerService} />
                            </Route>
                            <Route exact path="/annual-expenses">
-                               <AnnualExpensesComponent/>
+                               <AnnualExpensesComponent dataManagerService={this.props.dataManagerService}/>
                            </Route>
                            <Route exact path="/monthly-savings">
                                <MonthlySavingsComponent dataManagerService={this.props.dataManagerService}/>

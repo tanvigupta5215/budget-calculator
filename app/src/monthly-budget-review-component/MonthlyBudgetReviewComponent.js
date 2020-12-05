@@ -2,6 +2,24 @@ import React from "react";
 import './MonthlyBudgetReviewComponent.css';
 
 class MonthlyBudgetReviewComponent extends React.Component{
+    #dataService;
+    constructor(props) {
+        super(props);
+        this.state =  {
+            totalMonthlyIncome: '',
+            totalMonthlyExpenses: '',
+            totalAnnualExpense: '',
+            totalMonthlySavings: '',
+            finalBudgetValue: ''
+        };
+        this.#dataService = this.props.dataManagerService;
+        this.#dataService.monthlyBudgetReviewDataSubscriber.subscribe((monthlyReviewState) => {
+            console.log('MBR Recieved Date: ', monthlyReviewState);
+            this.state = monthlyReviewState;
+            this.setState(monthlyReviewState);
+        });
+    }
+
     render(){
         return(
             <div id="monthlyBudgetReviewItem" className="container">
@@ -20,7 +38,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="EnterMonthlyIncome"
+                            <input readOnly type="text" className="form-control" placeholder="" value={this.state.totalMonthlyIncome} aria-label="EnterMonthlyIncome"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
@@ -37,7 +55,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="EnterMonthlyExpenses"
+                            <input readOnly type="text" className="form-control" placeholder="" value={this.state.totalMonthlyExpenses} aria-label="EnterMonthlyExpenses"
                                    aria-describedby="basic-addon1" />
                         </div>
                     </div>
@@ -54,7 +72,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="EnterAnnualExpenses"
+                            <input readOnly type="text" className="form-control" placeholder="" value={this.state.totalAnnualExpense} aria-label="EnterAnnualExpenses"
                                    aria-describedby="basic-addon1" />
                                    <label className="form-check-label" id="defaultCheck1" htmlFor="annualExpenses">
                             <p className="mb-0"> /12=</p>
@@ -66,8 +84,8 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="EnterAnnualExpense"
-                                   aria-describedby="basic-addon1" />
+                            <input readOnly type="text" className="form-control" placeholder="" aria-label="EnterAnnualExpense"
+                                   aria-describedby="basic-addon1" value={(this.state.totalAnnualExpense/12 > 0) ? this.state.totalAnnualExpense/12 :''} />
                                    
                         </div>
                     </div>
@@ -83,8 +101,8 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" className="form-control" placeholder="" aria-label="EnterMonthlySavings"
-                                   aria-describedby="basic-addon1" />
+                            <input readOnly type="text" className="form-control" placeholder="" aria-label="EnterMonthlySavings"
+                                   aria-describedby="basic-addon1" value={this.state.totalMonthlySavings} />
                         </div>
                     </div>
                 </div>
@@ -99,8 +117,8 @@ class MonthlyBudgetReviewComponent extends React.Component{
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" id="budgetResultInput" className="form-control" placeholder="" aria-label="underOverbudget"
-                                   aria-describedby="basic-addon1"/>
+                            <input readOnly type="text" id="budgetResultInput" className="form-control" placeholder="" aria-label="underOverbudget"
+                                   aria-describedby="basic-addon1" value={this.state.finalBudgetValue}/>
                         </div>
                     </div>
                 </div>
