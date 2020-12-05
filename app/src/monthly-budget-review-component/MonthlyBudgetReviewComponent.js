@@ -19,10 +19,21 @@ class MonthlyBudgetReviewComponent extends React.Component{
             this.setState(monthlyReviewState);
         });
     }
+    resetButtonEventHandling(){
+        this.state =  {
+            totalMonthlyIncome: '',
+            totalMonthlyExpenses: '',
+            totalAnnualExpense: '',
+            totalMonthlySavings: '',
+            finalBudgetValue: ''
+        };
+        this.setState(this.state);
+        }
 
     render(){
         return(
-            <div id="monthlyBudgetReviewItem" className="container">
+            <div>
+                <div id="monthlyBudgetReviewItem" className="container">
                 <div className="row">
                     <div className=" col pt-3 pb-3 heading text-center">Monthly Budget Review</div>
                 </div>
@@ -122,6 +133,8 @@ class MonthlyBudgetReviewComponent extends React.Component{
                         </div>
                     </div>
                 </div>
+            </div>
+            <button type="button" onClick={this.resetButtonEventHandling.bind(this)} className="btn reset-button mt-3">Reset</button>
             </div>
         );
     }

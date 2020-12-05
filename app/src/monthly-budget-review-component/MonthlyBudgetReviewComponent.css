@@ -33,7 +33,16 @@ hr{
 .transparent-border{
     border-top: 1px light rgba(255, 255, 255,0);
 }
-
+.reset-button{
+    background-color: rgb(44, 163, 96);
+    color: rgb(255, 255, 255);
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 999999px;
+    box-shadow: rgb(229, 229, 229) 0px 1px 10px;
+}
 #budgetResultInput{
     color: #2ca360;
 }
