@@ -1,13 +1,24 @@
 import React from "react";
 import './MonthlySavingsComponent.css';
-class MonthlySavingsComponent extends React.Component {
+import BaseComponent from "../base-component/BaseComponent";
+class MonthlySavingsComponent extends BaseComponent {
+    componentStateName = 'monthlySavingsState';
+    constructor(props) {
+        super(props);
+        this.dataService.monthlySavingsStateDataSubscriber.subscribe((monthlySavingsState) => {
+            this.state = monthlySavingsState;
+            console.log('monthlySavingsState Received: ', monthlySavingsState);
+            this.setState(monthlySavingsState);
+        });
+    }
     render(){
         return(
             <div className="container">
                 <div id="retirementSavingsItem" className="row">
                     <div className="col-1">
                         <div className="form-check">
-                        <input className="form-check-input input-styling mt-2" type="checkbox" color="black" value="" id="retirementSavings" />
+                        <input className="form-check-input input-styling mt-2" type="checkbox"
+                               onChange={this.onCheckboxChangeHandler.bind(this, "retirementSavings")} checked={this.state.retirementSavings.retirementSavingsCheckbox} value="on"  id="retirementSavingsCheckbox" />
                         </div>
                     </div>
                     <div className="col-3 text-left">
@@ -22,14 +33,16 @@ class MonthlySavingsComponent extends React.Component {
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
                             <input type="number" className="form-control" placeholder="" aria-label="enterRetirementSavings"
-                                   aria-describedby="basic-addon1" />
+                                   onChange={this.onInputChangeHandler.bind(this, "retirementSavings")} value={this.state.retirementSavings.retirementSavingsInput}
+                                   aria-describedby="basic-addon1" id="retirementSavingsInput" disabled={!this.state.retirementSavings.retirementSavingsCheckbox} />
                         </div>
                     </div>
                 </div>
                 <div id="Other=" className="row">
                     <div className="col-1">
                         <div className="form-check">
-                            <input className="form-check-input input-styling mt-2" type="checkbox" color="black" value="" id="otherSavings" />
+                            <input className="form-check-input input-styling mt-2" type="checkbox"
+                                   onChange={this.onCheckboxChangeHandler.bind(this, "otherSavings")} checked={this.state.otherSavings.otherSavingsCheckbox} value="on" id="otherSavingsCheckbox" />
                         </div>
                     </div>
                     <div className="col-3 text-left">
@@ -44,7 +57,8 @@ class MonthlySavingsComponent extends React.Component {
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
                             <input type="number" className="form-control" placeholder="" aria-label="otherSavings"
-                                   aria-describedby="basic-addon1" />
+                                   onChange={this.onInputChangeHandler.bind(this, "otherSavings")} value={this.state.otherSavings.otherSavingsInput}
+                                   aria-describedby="basic-addon1" id="otherSavingsInput" disabled={!this.state.otherSavings.otherSavingsCheckbox} />
                         </div>
                     </div>
                 </div>

@@ -49,7 +49,7 @@ class NavigationComponent extends React.Component{
                        </div>
                        <div className="col-lg-8 col-xl-8 col-md-7 col-sm-6">
                            <Route exact path="/income">
-                               <IncomeCalculatorComponent/>
+                               <IncomeCalculatorComponent dataManagerService={this.props.dataManagerService}/>
                            </Route>
                            <Route exact path="/monthly-expenses">
                                <MonthlyExpensesComponent/>
@@ -58,7 +58,7 @@ class NavigationComponent extends React.Component{
                                <AnnualExpensesComponent/>
                            </Route>
                            <Route exact path="/monthly-savings">
-                               <MonthlySavingsComponent/>
+                               <MonthlySavingsComponent dataManagerService={this.props.dataManagerService}/>
                            </Route>
                        </div>
                    </div>

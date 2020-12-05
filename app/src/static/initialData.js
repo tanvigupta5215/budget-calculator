@@ -1,4 +1,4 @@
-export default {
+const labelingData = {
     monthlySavings: [
         {
             name: 'retirement',
@@ -338,3 +338,4 @@ export default {
         },
     ],
 };
+export default labelingData;
