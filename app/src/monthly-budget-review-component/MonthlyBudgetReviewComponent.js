@@ -106,7 +106,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div id="UnderoverBudgetItem" className="row final-result pt-3">
+                <div id="UnderoverBudgetItem" className={`${this.state.finalBudgetValue < 0 ? 'row bg-danger pt-3' : 'row final-result pt-3'}`}>
                 <div className="col-5 text-left">
                         <label className="form-check-label text-white" id="defaultCheck1" htmlFor="underOverBudget">
                             <p className="mb-0">Under/over budget=</p>
@@ -118,7 +118,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
                             <input readOnly type="text" id="budgetResultInput" className="form-control" placeholder="" aria-label="underOverbudget"
-                                   aria-describedby="basic-addon1" value={this.state.finalBudgetValue}/>
+                                   aria-describedby="basic-addon1" value={this.state.finalBudgetValue === 0 ? '0.00' : this.state.finalBudgetValue}/>
                         </div>
                     </div>
                 </div>
