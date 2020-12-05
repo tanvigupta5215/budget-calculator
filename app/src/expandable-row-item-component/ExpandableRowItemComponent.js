@@ -1,7 +1,7 @@
 import React from "react";
 import Arrow from "../static/Arrow";
-import './ExpandableRowItemComponent.css';
 import deleteIcon from '../static/DeleteIcon.svg';
+import './ExpandableRowItemComponent.css';
 class ExpandableRowItemComponent extends React.Component {
     initialData;
     hasChildren;
@@ -131,6 +131,19 @@ class ExpandableRowItemComponent extends React.Component {
         }
         this.props.deleteHandler(event);
     }
+    componentDidMount() {
+        this.props.dataManagerService.resetTrigger.subscribe(() => {
+            console.log('Triggered');
+            this.setState((prevState) => {
+                prevState.inputValue = '';
+                if(this.initialData.isChild){
+                    this.props.updateParentValue();
+                }
+                return {...prevState};
+            });
+            // this.forceUpdate();
+        });
+    }
 
     render() {
         return(
@@ -176,7 +189,7 @@ class ExpandableRowItemComponent extends React.Component {
                             this.initialData.items.map((item, index) => {
                                 item.isChild = true;
                                 return (
-                                    <ExpandableRowItemComponent deleteHandler={this.deleteIconHandler.bind(this)} updateParentValue={this.updateParentInput.bind(this)} onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
+                                    <ExpandableRowItemComponent dataManagerService={this.props.dataManagerService} deleteHandler={this.deleteIconHandler.bind(this)} updateParentValue={this.updateParentInput.bind(this)} onUpdate={this.onUpdateHandler.bind(this)} initialData={item} index={index} key={index} isChild={true}/>
                                 );
                             })
                         }
@@ -184,7 +197,6 @@ class ExpandableRowItemComponent extends React.Component {
                            this.hasChildren ? <div className="row ml-5">
                                <button onClick={this.addButtonClickHandler.bind(this)} className="add-btn ml-4">+</button>
                            </div> : null
-
                         }
                     </div>: null
                 }

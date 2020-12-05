@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 class DataManagerService {
     static #instance;
     #incomeComponentState = {
@@ -46,6 +46,8 @@ class DataManagerService {
 
     #monthlyBudgetReviewPublisher;
     monthlyBudgetReviewDataSubscriber;
+
+    resetTrigger;
     constructor() {
         this.#incomeComponentStatePublisher = new BehaviorSubject(this.#incomeComponentState);
         this.incomeComponentStateDataSubscriber = this.#incomeComponentStatePublisher.asObservable();
@@ -55,6 +57,8 @@ class DataManagerService {
 
         this.#monthlyBudgetReviewPublisher = new BehaviorSubject(this.#monthlyBudgetReviewState);
         this.monthlyBudgetReviewDataSubscriber = this.#monthlyBudgetReviewPublisher.asObservable();
+
+        this.resetTrigger = new Subject();
     }
 
     static getInstance() {
@@ -102,6 +106,42 @@ class DataManagerService {
         this.#monthlyBudgetReviewState.totalMonthlySavings = (this.#monthlyBudgetReviewState.totalMonthlySavings > 0) ? this.#monthlyBudgetReviewState.totalMonthlySavings : '';
 
         this.#monthlyBudgetReviewPublisher.next(this.#monthlyBudgetReviewState);
+    }
+
+    resetAll(){
+        this.#incomeComponentState = {
+            takeHomePay: {
+                takeHomePayCheckbox: true,
+                takeHomePayInput: ''
+            },
+            monthlyOtherIncome:{
+                monthlyOtherIncomeCheckbox: false,
+                monthlyOtherIncomePayInput: ''
+            },
+            annualOtherIncome:{
+                annualOtherIncomeCheckbox: false,
+                annualOtherIncomeInput: ''
+            }
+        };
+        this.#monthlySavingsState = {
+            retirementSavings:{
+                retirementSavingsCheckbox: true,
+                retirementSavingsInput: ''
+            },
+            otherSavings: {
+                otherSavingsCheckbox: false,
+                otherSavingsInput: ''
+            }
+        };
+        this.#incomeComponentStatePublisher.next(this.#incomeComponentState);
+        this.#monthlySavingsStatePublisher.next(this.#monthlySavingsState);
+        this.monthlyExpenseState = {
+
+        };
+        this.annualExpenseState = {
+
+        };
+        this.resetTrigger.next(true);
 
     }
 }

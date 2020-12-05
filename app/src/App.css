@@ -56,3 +56,31 @@ input[type=number] {
 .text-small{
   font-size: 0.75em;
 }
+
+.add-btn:focus{
+  outline: none;
+}
+
+.add-btn {
+  color: rgb(255, 255, 255);
+  background-color: rgb(44, 163, 96);
+  border-radius: 999999px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 0 0 40px 0;
+  outline: 0;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #ffffff;
+}
+
+
+.delete-icon{
+  height: 30px;
+}
+
+

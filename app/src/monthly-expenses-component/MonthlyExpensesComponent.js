@@ -21,7 +21,7 @@ class MonthlyExpensesComponent extends React.Component{
                          expenseLabel = this.#dataService.monthlyExpenseState[expenseLabel.name] || expenseLabel;
                          expenseLabel.isParent = true;
                          return (
-                             <ExpandableRowItemComponent onUpdate={this.pushToDataStore.bind(this)} initialData={expenseLabel} index={index} key={index}/>
+                             <ExpandableRowItemComponent dataManagerService={this.props.dataManagerService} onUpdate={this.pushToDataStore.bind(this)} initialData={expenseLabel} index={index} key={index}/>
                          );
                      })
 

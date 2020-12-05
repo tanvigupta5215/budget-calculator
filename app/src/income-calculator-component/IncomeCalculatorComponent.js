@@ -10,6 +10,16 @@ class IncomeCalculatorComponent extends BaseComponent {
             this.setState(incomeData);
         });
     }
+    componentDidMount() {
+        // this.dataService.resetTrigger.subscribe(() => {
+        //     console.log('Triggered');
+        //     // eslint-disable-next-line react/no-direct-mutation-state
+        //     this.state.inputValue = '';
+        //     console.log(this);
+        //     this.setState(this.state);
+        //     // this.forceUpdate();
+        // });
+    }
 
     render() {
         return(

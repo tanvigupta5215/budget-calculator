@@ -23,6 +23,7 @@ const labelingData = {
             enabled: true,
             value: '',
             on: true,
+            canAddMore: true,
             items: [
                 {
                     name: 'groceries',
@@ -57,6 +58,7 @@ const labelingData = {
             label: 'Shelter',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'mortgage',
@@ -84,6 +86,7 @@ const labelingData = {
             label: 'Household',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'utilities',
@@ -110,6 +113,7 @@ const labelingData = {
             label: 'Transportation',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'publicTransit',
@@ -148,6 +152,7 @@ const labelingData = {
             label: 'Healthcare',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'physio',
@@ -186,6 +191,7 @@ const labelingData = {
             label: 'Loans',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'lineOfCredit',
@@ -224,6 +230,7 @@ const labelingData = {
             label: 'Personal',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'gifts',
@@ -261,13 +268,14 @@ const labelingData = {
             name: 'childcare',
             label: 'Childcare',
             enabled: false,
-            value: '',
+            value: ''
         },
         {
             name: 'vice',
             label: 'Vice',
             enabled: false,
             value: '',
+            canAddMore: true,
             items: [
                 {
                     name: 'alcohol',
@@ -294,26 +302,26 @@ const labelingData = {
         {
             name: 'tuition',
             label: 'Tuition',
-            enabled: true,
+            on: true,
             value: '',
         },
         {
             name: 'taxes',
             label: 'Taxes',
-            enabled: false,
+            on: false,
             value: '',
         },
         {
             name: 'vacation',
             label: 'Vacation',
-            enabled: false,
+            on: false,
             value: '',
         },
         {
             name: 'medical',
             label: 'Medical',
             description: '(eye exam, dentist, etc.)',
-            enabled: false,
+            on: false,
             value: '',
         },
     ],

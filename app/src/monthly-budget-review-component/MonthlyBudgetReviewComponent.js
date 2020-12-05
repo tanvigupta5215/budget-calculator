@@ -27,6 +27,7 @@ class MonthlyBudgetReviewComponent extends React.Component{
             totalMonthlySavings: '',
             finalBudgetValue: ''
         };
+        this.#dataService.resetAll();
         this.setState(this.state);
         }
 
