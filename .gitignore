@@ -449,3 +449,4 @@ FodyWeavers.xsd
 app/node_modules/
 .idea/aws.xml
 /app/.eslintcache
+/app/build/
